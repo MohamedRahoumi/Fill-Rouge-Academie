@@ -1,0 +1,1 @@
+﻿2026-03-01 | mettre en place la migration categories avec cle unique sur nom
