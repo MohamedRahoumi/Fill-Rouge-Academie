@@ -2,3 +2,4 @@
 2026-03-01 | definir le modele Categorie et ses relations vers joueurs
 2026-03-02 | exposer CategorieController pour les endpoints API
 2026-03-02 | initialiser la migration groupes avec reference categorie
+2026-03-03 | modeliser Groupe avec scopes pour les etats actifs
