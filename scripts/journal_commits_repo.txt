@@ -3,3 +3,4 @@
 2026-03-02 | exposer CategorieController pour les endpoints API
 2026-03-02 | initialiser la migration groupes avec reference categorie
 2026-03-03 | modeliser Groupe avec scopes pour les etats actifs
+2026-03-03 | brancher GroupeController avec pagination standard
