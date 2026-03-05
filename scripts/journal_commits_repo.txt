@@ -7,3 +7,4 @@
 2026-03-04 | preparer la migration joueurs avec cle etrangere groupe_id
 2026-03-04 | declarer le modele Joueur avec cast date_naissance
 2026-03-05 | publier JoueurController pour le CRUD complet
+2026-03-05 | parametrer la migration seances avec date et horaire
