@@ -11,3 +11,4 @@
 2026-03-06 | relier le modele Seance au groupe parent
 2026-03-06 | orchestrer SeanceController pour la planification
 2026-03-07 | normaliser la migration presences avec contrainte unique
+2026-03-07 | configurer le modele Presence avec statut par defaut
