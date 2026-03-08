@@ -13,3 +13,4 @@
 2026-03-07 | normaliser la migration presences avec contrainte unique
 2026-03-07 | configurer le modele Presence avec statut par defaut
 2026-03-08 | piloter PresenceController pour le marquage quotidien
+2026-03-08 | etablir la migration paiements avec montant et mode
