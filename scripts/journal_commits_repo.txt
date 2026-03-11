@@ -18,3 +18,4 @@
 2026-03-09 | connecter PaiementController au suivi des reglements
 2026-03-10 | structurer la migration evaluations avec notes techniques
 2026-03-10 | mapper le modele Evaluation vers le joueur
+2026-03-11 | outiller EvaluationController pour la saisie des notes
