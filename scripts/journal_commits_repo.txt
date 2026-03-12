@@ -20,3 +20,4 @@
 2026-03-10 | mapper le modele Evaluation vers le joueur
 2026-03-11 | outiller EvaluationController pour la saisie des notes
 2026-03-11 | indexer les dates de seance dans une migration dediee
+2026-03-12 | ouvrir les attributs fillable dans le modele Joueur
