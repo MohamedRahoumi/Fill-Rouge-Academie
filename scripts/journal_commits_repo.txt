@@ -22,3 +22,4 @@
 2026-03-11 | indexer les dates de seance dans une migration dediee
 2026-03-12 | ouvrir les attributs fillable dans le modele Joueur
 2026-03-12 | valider les donnees d entree dans JoueurController
+2026-03-13 | activer le statut actif des groupes via migration
