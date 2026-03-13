@@ -23,3 +23,4 @@
 2026-03-12 | ouvrir les attributs fillable dans le modele Joueur
 2026-03-12 | valider les donnees d entree dans JoueurController
 2026-03-13 | activer le statut actif des groupes via migration
+2026-03-13 | uniformiser le mutator telephone dans le modele User
