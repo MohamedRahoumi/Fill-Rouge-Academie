@@ -24,3 +24,4 @@
 2026-03-12 | valider les donnees d entree dans JoueurController
 2026-03-13 | activer le statut actif des groupes via migration
 2026-03-13 | uniformiser le mutator telephone dans le modele User
+2026-03-14 | integrer la recherche par nom dans JoueurController
