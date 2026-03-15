@@ -27,3 +27,4 @@
 2026-03-14 | integrer la recherche par nom dans JoueurController
 2026-03-14 | rendre email nullable dans la migration joueurs
 2026-03-15 | charger categorie par defaut dans le modele Groupe
+2026-03-15 | stabiliser la reponse JSON de GroupeController
