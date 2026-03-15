@@ -26,3 +26,4 @@
 2026-03-13 | uniformiser le mutator telephone dans le modele User
 2026-03-14 | integrer la recherche par nom dans JoueurController
 2026-03-14 | rendre email nullable dans la migration joueurs
+2026-03-15 | charger categorie par defaut dans le modele Groupe
