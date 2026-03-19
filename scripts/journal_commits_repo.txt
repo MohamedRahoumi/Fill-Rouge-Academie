@@ -34,3 +34,4 @@
 2026-03-17 | assainir la migration presences pour eliminer les doublons
 2026-03-18 | synchroniser la relation seance dans le modele Presence
 2026-03-18 | gerer la mise a jour multiple via PresenceController
+2026-03-19 | encadrer les bornes de note dans la migration evaluations
