@@ -37,3 +37,4 @@
 2026-03-19 | encadrer les bornes de note dans la migration evaluations
 2026-03-19 | calculer la moyenne dans le modele Evaluation
 2026-03-20 | ordonner le tri des notes dans EvaluationController
+2026-03-20 | activer le soft delete des joueurs par migration
