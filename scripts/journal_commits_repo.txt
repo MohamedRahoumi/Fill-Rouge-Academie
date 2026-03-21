@@ -38,3 +38,4 @@
 2026-03-19 | calculer la moyenne dans le modele Evaluation
 2026-03-20 | ordonner le tri des notes dans EvaluationController
 2026-03-20 | activer le soft delete des joueurs par migration
+2026-03-21 | inclure SoftDeletes dans le modele Joueur
