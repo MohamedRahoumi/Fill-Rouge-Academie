@@ -42,3 +42,4 @@
 2026-03-21 | basculer la suppression logique dans JoueurController
 2026-03-22 | deployer la migration notifications academie
 2026-03-22 | specialiser NotificationAcademie avec scope non lues
+2026-03-23 | administrer NotificationController pour marquer comme lu
