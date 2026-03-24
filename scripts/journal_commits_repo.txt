@@ -44,3 +44,4 @@
 2026-03-22 | specialiser NotificationAcademie avec scope non lues
 2026-03-23 | administrer NotificationController pour marquer comme lu
 2026-03-23 | journaliser les paiements via migration d historique
+2026-03-24 | rattacher HistoriquePaiement au modele Paiement
