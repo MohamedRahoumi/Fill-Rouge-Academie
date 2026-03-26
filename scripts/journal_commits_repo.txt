@@ -49,3 +49,4 @@
 2026-03-25 | optimiser la migration seances avec index compose
 2026-03-25 | introduire le scope a_venir dans le modele Seance
 2026-03-26 | accelere SeanceController avec eager loading groupe
+2026-03-26 | imposer les cascades de suppression via migration
