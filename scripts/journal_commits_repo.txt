@@ -48,3 +48,4 @@
 2026-03-24 | presenter HistoriquePaiementController pour lecture admin
 2026-03-25 | optimiser la migration seances avec index compose
 2026-03-25 | introduire le scope a_venir dans le modele Seance
+2026-03-26 | accelere SeanceController avec eager loading groupe
