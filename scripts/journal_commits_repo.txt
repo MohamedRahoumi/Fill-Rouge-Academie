@@ -51,3 +51,4 @@
 2026-03-26 | accelere SeanceController avec eager loading groupe
 2026-03-26 | imposer les cascades de suppression via migration
 2026-03-27 | renforcer le modele User avec relation academie
+2026-03-27 | proteger AuthController contre les tentatives en rafale
