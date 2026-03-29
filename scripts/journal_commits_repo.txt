@@ -54,3 +54,4 @@
 2026-03-27 | proteger AuthController contre les tentatives en rafale
 2026-03-28 | tracer les modifications joueurs via migration de journal
 2026-03-28 | formaliser le modele JournalJoueur pour suivi d actions
+2026-03-29 | ouvrir JournalJoueurController a la consultation admin
