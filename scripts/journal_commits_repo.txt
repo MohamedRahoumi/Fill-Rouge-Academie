@@ -58,3 +58,4 @@
 2026-03-29 | clore la migration categories avec valeurs par defaut
 2026-03-30 | fiabiliser le modele Categorie avec compteur de joueurs
 2026-03-30 | affuter CategorieController avec tri et filtres
+2026-03-31 | epurer la migration groupes en retirant les colonnes legacy
