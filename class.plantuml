@@ -1,0 +1,104 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+
+class User {
+  - id : BigInt
+  - nom : String
+  - prenom : String
+  - email : String
+  - role : Enum {superadmin, coach, parent}
+  - password : String
+}
+
+class Admin
+class Coach
+class Parent
+
+User <|-- Admin
+User <|-- Coach
+User <|-- Parent
+
+class Categorie {
+  - id : BigInt
+  - nom : String
+  - description : Text
+}
+
+class Groupe {
+  - id : BigInt
+  - nom : String
+}
+
+class Joueur {
+  - id : BigInt
+  - nom : String
+  - prenom : String
+  - date_naissance : Date
+}
+
+class Seance {
+  - id : BigInt
+  - titre : String
+  - date_seance : Date
+  - heure_debut : Time
+  - heure_fin : Time
+}
+
+' Table pivot enrichie (M:N Joueur <-> Seance)
+class Presence << Pivot >> {
+  - id : BigInt
+  - est_present : Boolean
+  - motif_absence : String
+  --
+  - unique(seance, joueur)
+}
+
+class Evaluation {
+  - id : BigInt
+  - note : Integer
+  - commentaire : Text
+  - date_evaluation : Date
+  --
+  - unique(seance, joueur)
+}
+
+class Paiement {
+  - id : BigInt
+  - montant : Float
+  - mois_concerne : Date
+  - stripe_transaction_id : String
+  - statut : Enum {pending, paid, failed}
+}
+
+class NotificationAcademie {
+  - id : BigInt
+  - titre : String
+  - message : Text
+  - est_lu : Boolean
+}
+
+' Relations (cardinalites)
+Categorie "1" -- "0..*" Groupe : contient
+Coach "0..1" -- "0..*" Groupe : gere
+
+Parent "1" -- "0..*" Joueur : responsable de
+Categorie "0..1" -- "0..*" Joueur : appartient a
+Groupe "0..1" -- "0..*" Joueur : affecte a
+
+Groupe "1" -- "0..*" Seance : planifie
+Coach "1" -- "0..*" Seance : anime
+
+Seance "1" -- "0..*" Presence : presences
+Joueur "1" -- "0..*" Presence : presences
+
+Joueur "1" -- "0..*" Evaluation : recoit
+Coach "1" -- "0..*" Evaluation : redige
+Seance "0..1" -- "0..*" Evaluation : liee a
+
+Parent "1" -- "0..*" Paiement : effectue
+
+User "1" -- "0..*" NotificationAcademie : recoit
+Admin "1" -- "0..*" NotificationAcademie : envoie
+
+@enduml

@@ -1,0 +1,47 @@
+CAHIER DES CHARGES : Plateforme de Gestion d'Académie de Sport
+1. Présentation du Projet
+Le présent document définit les spécifications pour la conception et le développement d'une application web (basée sur le framework Laravel) dédiée à la gestion centralisée d'une académie de sport. L'objectif principal est de digitaliser le suivi sportif des joueurs, d'optimiser la gestion administrative (planification, présences) et d'automatiser la gestion financière via le paiement en ligne. Note : L'application est un système fermé (Intranet/Extranet). Il n'y a pas de page d'inscription publique ; la création et la distribution des accès sont strictement gérées par l'administration.
+
+2. Les Acteurs du Système
+Le système repose sur une architecture à trois (3) rôles distincts. Tous ces rôles héritent d'une entité globale "Utilisateur" nécessitant une authentification obligatoire pour accéder à la plateforme :
+
+Super Administrateur : Le responsable global et décisionnaire de l'académie.
+Coach : L'entraîneur responsable de la gestion sportive de ses groupes assignés.
+Parent : Le tuteur légal effectuant le suivi de son/ses enfant(s) (Joueurs) et la gestion des frais d'académie.
+3. Spécifications Fonctionnelles par Rôle
+3.1. Espace Super Administrateur
+Le Super Administrateur est le chef d'orchestre de la plateforme. Il est le seul habilité à effectuer les paramétrages de base.
+
+Gestion des Accès : Création, modification et suppression des comptes des Coachs et des Parents.
+Gestion de la Structure : Création et configuration des Catégories (ex: U9, U11) et des Groupes (ex: Groupe A, Groupe B).
+Gestion des Joueurs (Enfants) :
+Création exclusive des profils "Joueurs".
+Liaison obligatoire du joueur à son "Parent" (tuteur).
+Affectation initiale du joueur à une "Catégorie" en fonction de son âge.
+Affectation des Coachs : Assignation d'un ou plusieurs groupes sous la responsabilité d'un Coach.
+Suivi Financier (Automatisé) : Consultation de l'historique et de l'état des paiements. Les validations se font automatiquement via l'API Stripe (pas de validation manuelle requise).
+Communication : Création et envoi de notifications (générales ou ciblées) aux utilisateurs (Parents, Coachs).
+3.2. Espace Coach
+Le Coach dispose d'un espace dédié uniquement à la gestion sportive des joueurs qui lui sont confiés.
+
+Constitution des Groupes : Affectation des joueurs (préalablement placés dans sa catégorie par l'Admin) vers ses groupes spécifiques (ex: assigner un joueur U11 au "Groupe A").
+Planification : Création et gestion du planning hebdomadaire des séances d'entraînement pour ses groupes (Date, heure de début, heure de fin).
+Suivi d'Assiduité : Réalisation de l'appel lors des séances avec marquage des présences et saisie des motifs en cas d'absence.
+Suivi Pédagogique (Évaluation) : Rédaction d'évaluations périodiques (note et commentaire détaillé) pour mesurer la progression technique, physique et comportementale des joueurs.
+3.3. Espace Parent
+Le tableau de bord du Parent est orienté sur le suivi sportif et la régularisation administrative.
+
+Suivi Sportif : Consultation du profil de son/ses enfant(s), incluant l'historique des présences/absences et l'affichage des évaluations rédigées par le coach.
+Planning : Visualisation du calendrier des séances d'entraînement prévues pour les groupes de ses enfants.
+Gestion des Paiements en ligne (Stripe) :
+Paiement mensuel des frais de l'académie directement en ligne de manière sécurisée (par carte bancaire via la passerelle de paiement Stripe).
+Consultation de l'historique et des statuts des transactions (Payé, En attente, Échoué).
+4. Règles de Gestion (Business Rules)
+Afin de garantir l'intégrité des données dans la base de données, les règles de cardinalité et de contraintes suivantes s'appliquent au système :
+
+Un parent doit avoir au moins un joueur (enfant) inscrit à sa charge pour que son compte soit pertinent.
+Un joueur ne peut être rattaché qu'à un seul parent (tuteur principal sur la plateforme).
+Un joueur appartient à une seule catégorie, et peut être assigné à un seul groupe à la fois.
+Un groupe dépend d'une seule catégorie et est géré par un seul coach responsable.
+Un joueur peut assister à plusieurs séances, et une séance contient plusieurs joueurs (Relation Many-to-Many gérée par une table pivot "Présences").
+Aucune action (consultation, modification, paiement) n'est possible sans une session active (authentification).

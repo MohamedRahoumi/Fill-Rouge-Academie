@@ -1,0 +1,1805 @@
+﻿{
+    "variable":  [
+                     {
+                         "key":  "base_url",
+                         "value":  "http://localhost:8000"
+                     },
+                     {
+                         "key":  "token",
+                         "value":  ""
+                     }
+                 ],
+    "info":  {
+                 "description":  "Generated from Laravel route:list (api routes).",
+                 "name":  "AcaFoot API",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "item":  [
+                 {
+                     "name":  "General",
+                     "item":  [
+                                  {
+                                      "name":  "GET api",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api",
+                                                                  "path":  [
+                                                                               "api"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: Closure",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "dashboard",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/dashboard",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "dashboard"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: Closure",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "GET api/test",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/test",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "test"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: Closure",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Auth",
+                     "item":  [
+                                  {
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/auth/login",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "auth",
+                                                                               "login"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\AuthController@login",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  },
+                                      "name":  "POST api/auth/login",
+                                      "event":  [
+                                                    {
+                                                        "script":  {
+                                                                       "exec":  [
+                                                                                    "const json = pm.response.json();",
+                                                                                    "if (json?.data?.token) {",
+                                                                                    "  pm.collectionVariables.set(\"token\", json.data.token);",
+                                                                                    "}"
+                                                                                ],
+                                                                       "type":  "text/javascript"
+                                                                   },
+                                                        "listen":  "test"
+                                                    }
+                                                ]
+                                  },
+                                  {
+                                      "name":  "POST api/auth/logout",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/auth/logout",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "auth",
+                                                                               "logout"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\AuthController@logout",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "GET api/auth/me",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/auth/me",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "auth",
+                                                                               "me"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\AuthController@me",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Notifications",
+                     "item":  [
+                                  {
+                                      "name":  "notifications.readAll",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/notifications/read-all",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "notifications",
+                                                                               "read-all"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\NotificationController@markAllAsRead",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "notifications.read",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/notifications/{notification}/read",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "notifications",
+                                                                               "{notification}",
+                                                                               "read"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\NotificationController@markAsRead",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Admin",
+                     "item":  [
+                                  {
+                                      "name":  "admin.categories.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/categories",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "categories"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@storeCategorie",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.categories.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/categories/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "categories",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@createCategorie",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.categories.update",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "PUT",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/categories/{categorie}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "categories",
+                                                                               "{categorie}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@updateCategorie",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.categories.destroy",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/categories/{categorie}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "categories",
+                                                                               "{categorie}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@destroyCategorie",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.categories.edit",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/categories/{categorie}/edit",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "categories",
+                                                                               "{categorie}",
+                                                                               "edit"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@editCategorie",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.coachs.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/coachs",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "coachs"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@storeCoach",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.coachs.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/coachs/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "coachs",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@createCoach",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.coachs.update",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "PUT",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/coachs/{coach}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "coachs",
+                                                                               "{coach}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@updateCoach",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.coachs.destroy",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/coachs/{coach}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "coachs",
+                                                                               "{coach}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@destroyCoach",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.coachs.edit",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/coachs/{coach}/edit",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "coachs",
+                                                                               "{coach}",
+                                                                               "edit"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@editCoach",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.dashboard",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/dashboard",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "dashboard"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@index",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.groupes.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/groupes",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "groupes"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@storeGroupe",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.groupes.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/groupes/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "groupes",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@createGroupe",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.groupes.update",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "PUT",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/groupes/{groupe}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "groupes",
+                                                                               "{groupe}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@updateGroupe",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.groupes.destroy",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/groupes/{groupe}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "groupes",
+                                                                               "{groupe}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@destroyGroupe",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.groupes.assignCoach",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/groupes/{groupe}/assign-coach",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "groupes",
+                                                                               "{groupe}",
+                                                                               "assign-coach"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@assignCoachToGroupe",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.groupes.edit",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/groupes/{groupe}/edit",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "groupes",
+                                                                               "{groupe}",
+                                                                               "edit"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@editGroupe",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.joueurs.index",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/joueurs",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "joueurs"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@joueurs",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.joueurs.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/joueurs",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "joueurs"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@storeJoueur",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.joueurs.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/joueurs/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "joueurs",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@createJoueur",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.joueurs.update",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "PUT",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/joueurs/{joueur}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "joueurs",
+                                                                               "{joueur}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@updateJoueur",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.joueurs.destroy",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/joueurs/{joueur}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "joueurs",
+                                                                               "{joueur}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@destroyJoueur",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.joueurs.assignCategorie",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/joueurs/{joueur}/assign-categorie",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "joueurs",
+                                                                               "{joueur}",
+                                                                               "assign-categorie"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@assignJoueurToCategorie",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.joueurs.edit",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/joueurs/{joueur}/edit",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "joueurs",
+                                                                               "{joueur}",
+                                                                               "edit"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@editJoueur",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.notifications.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/notifications",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "notifications"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@storeNotification",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.notifications.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/notifications/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "notifications",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@createNotification",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.paiements.index",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/paiements",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "paiements"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@paiements",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.paiements.valider",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/paiements/{paiement}/valider",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "paiements",
+                                                                               "{paiement}",
+                                                                               "valider"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@validerPaiement",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.parents.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/parents",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "parents"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@storeParent",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.parents.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/parents/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "parents",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@createParent",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.parents.update",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "PUT",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/parents/{parent}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "parents",
+                                                                               "{parent}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@updateParent",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.parents.destroy",
+                                      "request":  {
+                                                      "method":  "DELETE",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/parents/{parent}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "parents",
+                                                                               "{parent}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@destroyParent",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "admin.parents.edit",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/admin/parents/{parent}/edit",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "admin",
+                                                                               "parents",
+                                                                               "{parent}",
+                                                                               "edit"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\SuperAdminController@editParent",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Coach",
+                     "item":  [
+                                  {
+                                      "name":  "coach.dashboard",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/dashboard",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "dashboard"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@index",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.groupes.show",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/groupes/{groupe}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "groupes",
+                                                                               "{groupe}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@showGroupe",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.groupes.assignJoueur",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/groupes/{groupe}/assign-joueur",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "groupes",
+                                                                               "{groupe}",
+                                                                               "assign-joueur"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@assignJoueur",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.seances.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/groupes/{groupe}/seances",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "groupes",
+                                                                               "{groupe}",
+                                                                               "seances"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@storeSeance",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.seances.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/groupes/{groupe}/seances/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "groupes",
+                                                                               "{groupe}",
+                                                                               "seances",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@createSeance",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.evaluations.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/joueurs/{joueur}/evaluation",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "joueurs",
+                                                                               "{joueur}",
+                                                                               "evaluation"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@storeEvaluation",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.evaluations.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/joueurs/{joueur}/evaluation/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "joueurs",
+                                                                               "{joueur}",
+                                                                               "evaluation",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@createEvaluation",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.seances.appel",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/seances/{seance}/appel",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "seances",
+                                                                               "{seance}",
+                                                                               "appel"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@appel",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.seances.storeAppel",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/seances/{seance}/appel",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "seances",
+                                                                               "{seance}",
+                                                                               "appel"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@storeAppel",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.seances.evaluations.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/seances/{seance}/joueurs/{joueur}/evaluation",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "seances",
+                                                                               "{seance}",
+                                                                               "joueurs",
+                                                                               "{joueur}",
+                                                                               "evaluation"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@storeEvaluationForSeance",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "coach.seances.evaluations.create",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/coach/seances/{seance}/joueurs/{joueur}/evaluation/create",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "coach",
+                                                                               "seances",
+                                                                               "{seance}",
+                                                                               "joueurs",
+                                                                               "{joueur}",
+                                                                               "evaluation",
+                                                                               "create"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\CoachController@createEvaluationForSeance",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "Parent",
+                     "item":  [
+                                  {
+                                      "name":  "parent.dashboard",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/parent/dashboard",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "parent",
+                                                                               "dashboard"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\ParentController@index",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "parent.joueurs.show",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/parent/joueurs/{joueur}",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "parent",
+                                                                               "joueurs",
+                                                                               "{joueur}"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\ParentController@showJoueur",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "parent.paiement",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/parent/paiement",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "parent",
+                                                                               "paiement"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\ParentController@payer",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "parent.paiement.store",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/parent/paiement",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "parent",
+                                                                               "paiement"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\ParentController@storePaiement",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "parent.paiement.confirm",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/parent/paiement/confirm",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "parent",
+                                                                               "paiement",
+                                                                               "confirm"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\ParentController@confirmStripeIntent",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  },
+                                  {
+                                      "name":  "parent.paiement.intent",
+                                      "request":  {
+                                                      "body":  {
+                                                                   "raw":  "{\n  \"example\": \"value\"\n}",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               },
+                                                                   "mode":  "raw"
+                                                               },
+                                                      "method":  "POST",
+                                                      "url":  {
+                                                                  "host":  [
+                                                                               "{{base_url}}"
+                                                                           ],
+                                                                  "raw":  "{{base_url}}/api/parent/paiement/intent",
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "parent",
+                                                                               "paiement",
+                                                                               "intent"
+                                                                           ]
+                                                              },
+                                                      "description":  "Action: App\\Http\\Controllers\\ParentController@createStripeIntent",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Accept",
+                                                                         "type":  "text",
+                                                                         "value":  "application/json"
+                                                                     }
+                                                                 ]
+                                                  }
+                                  }
+                              ]
+                 }
+             ]
+}

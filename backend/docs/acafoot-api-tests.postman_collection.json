@@ -1,0 +1,536 @@
+{
+  "info": {
+    "name": "AcaFoot API - Tests",
+    "description": "Collection de test manuelle pour AcaFoot (Laravel Sanctum). Importer ce fichier dans Postman puis lancer les requetes dans l'ordre.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000" },
+    { "key": "token", "value": "" },
+    { "key": "parent_token", "value": "" },
+    { "key": "admin_email", "value": "admin@minifoot.com" },
+    { "key": "admin_password", "value": "password" },
+    { "key": "parent_email", "value": "parent1@minifoot.com" },
+    { "key": "parent_password", "value": "password123" },
+    { "key": "coach_id", "value": "" },
+    { "key": "parent_id", "value": "" },
+    { "key": "categorie_id", "value": "" },
+    { "key": "groupe_id", "value": "" },
+    { "key": "joueur_id", "value": "" },
+    { "key": "notification_id", "value": "" },
+    { "key": "paiement_id", "value": "" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{token}}", "type": "string" }
+    ]
+  },
+  "item": [
+    {
+      "name": "01 - Health",
+      "item": [
+        {
+          "name": "GET /api",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('ok=true', function () { pm.expect(json.ok).to.eql(true); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /api/test",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/test"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('service=backend', function () { pm.expect(json.service).to.eql('backend'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "02 - Auth Admin",
+      "item": [
+        {
+          "name": "POST /api/auth/login (admin)",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{admin_email}}\",\n  \"password\": \"{{admin_password}}\",\n  \"device_name\": \"postman-admin\"\n}"
+            },
+            "url": "{{base_url}}/api/auth/login"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Token recu', function () { pm.expect(json.data.token).to.be.a('string').and.not.empty; });",
+                  "pm.collectionVariables.set('token', json.data.token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /api/auth/me",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/auth/me"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Role superadmin', function () { pm.expect(json.data.role).to.eql('superadmin'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /api/dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/dashboard"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "03 - Admin CRUD Principal",
+      "item": [
+        {
+          "name": "POST /api/admin/coachs",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Coach\",\n  \"prenom\": \"Test\",\n  \"email\": \"coach1@minifoot.com\",\n  \"password\": \"password123\",\n  \"password_confirmation\": \"password123\"\n}"
+            },
+            "url": "{{base_url}}/api/admin/coachs"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 201', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "if (json?.data?.coach?.id) { pm.collectionVariables.set('coach_id', json.data.coach.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/admin/parents",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Parent\",\n  \"prenom\": \"Test\",\n  \"email\": \"{{parent_email}}\",\n  \"password\": \"{{parent_password}}\",\n  \"password_confirmation\": \"{{parent_password}}\"\n}"
+            },
+            "url": "{{base_url}}/api/admin/parents"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 201', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "if (json?.data?.parent?.id) { pm.collectionVariables.set('parent_id', json.data.parent.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/admin/categories",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"U13\",\n  \"description\": \"Categorie test Postman\"\n}"
+            },
+            "url": "{{base_url}}/api/admin/categories"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 201', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "if (json?.data?.categorie?.id) { pm.collectionVariables.set('categorie_id', json.data.categorie.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/admin/groupes",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Groupe A\",\n  \"categorie_id\": {{categorie_id}},\n  \"coach_id\": {{coach_id}}\n}"
+            },
+            "url": "{{base_url}}/api/admin/groupes"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 201', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "if (json?.data?.groupe?.id) { pm.collectionVariables.set('groupe_id', json.data.groupe.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/admin/joueurs",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Joueur\",\n  \"prenom\": \"Test\",\n  \"date_naissance\": \"2014-05-10\",\n  \"parent_id\": {{parent_id}},\n  \"categorie_id\": {{categorie_id}}\n}"
+            },
+            "url": "{{base_url}}/api/admin/joueurs"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 201', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "if (json?.data?.joueur?.id) { pm.collectionVariables.set('joueur_id', json.data.joueur.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/admin/groupes/{groupe}/assign-coach",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"coach_id\": {{coach_id}}\n}"
+            },
+            "url": "{{base_url}}/api/admin/groupes/{{groupe_id}}/assign-coach"
+          }
+        },
+        {
+          "name": "POST /api/admin/joueurs/{joueur}/assign-categorie",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categorie_id\": {{categorie_id}}\n}"
+            },
+            "url": "{{base_url}}/api/admin/joueurs/{{joueur_id}}/assign-categorie"
+          }
+        },
+        {
+          "name": "GET /api/admin/dashboard",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/admin/dashboard"
+          }
+        },
+        {
+          "name": "POST /api/admin/notifications",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titre\": \"Info test\",\n  \"message\": \"Notification envoyee depuis Postman\",\n  \"cible\": \"specific\",\n  \"user_ids\": [{{parent_id}}]\n}"
+            },
+            "url": "{{base_url}}/api/admin/notifications"
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 - Parent",
+      "item": [
+        {
+          "name": "POST /api/auth/login (parent)",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{parent_email}}\",\n  \"password\": \"{{parent_password}}\",\n  \"device_name\": \"postman-parent\"\n}"
+            },
+            "url": "{{base_url}}/api/auth/login"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.collectionVariables.set('parent_token', json.data.token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "GET /api/parent/dashboard",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                { "key": "token", "value": "{{parent_token}}", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/parent/dashboard"
+          }
+        },
+        {
+          "name": "GET /api/parent/joueurs/{joueur}",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                { "key": "token", "value": "{{parent_token}}", "type": "string" }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/parent/joueurs/{{joueur_id}}"
+          }
+        },
+        {
+          "name": "POST /api/parent/paiement (test Stripe)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                { "key": "token", "value": "{{parent_token}}", "type": "string" }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" },
+              { "key": "Content-Type", "value": "application/json", "type": "text" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"montant\": 300,\n  \"mois_concerne\": \"2026-04\"\n}"
+            },
+            "url": "{{base_url}}/api/parent/paiement"
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 - Admin Paiements et Notifications",
+      "item": [
+        {
+          "name": "GET /api/admin/paiements",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/admin/paiements"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "const first = json?.data?.paiements?.data?.[0];",
+                  "if (first?.id) { pm.collectionVariables.set('paiement_id', first.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "POST /api/admin/paiements/{paiement}/valider",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/admin/paiements/{{paiement_id}}/valider"
+          }
+        },
+        {
+          "name": "POST /api/notifications/read-all",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/notifications/read-all"
+          }
+        },
+        {
+          "name": "POST /api/notifications/{notification}/read",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/notifications/{{notification_id}}/read"
+          }
+        }
+      ]
+    },
+    {
+      "name": "99 - Logout",
+      "item": [
+        {
+          "name": "POST /api/auth/logout (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json", "type": "text" }
+            ],
+            "url": "{{base_url}}/api/auth/logout"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "pm.collectionVariables.unset('token');"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam shadowing false
+skinparam usecase {
+    BackgroundColor #F8FAFC
+    BorderColor #334155
+}
+
+actor "Utilisateur" as User
+actor "Super Admin" as Admin
+actor "Coach" as Coach
+actor "Parent" as Parent
+actor "Stripe" as Stripe <<Externe>>
+
+Admin -up-|> User
+Coach -up-|> User
+Parent -up-|> User
+
+rectangle "Plateforme MiniFoot Academy" {
+ 
+        usecase "S'authentifier" as UC_Auth
+
+
+    
+        usecase "Gerer utilisateurs" as UC_ManageUsers
+        usecase "Gerer categories" as UC_ManageCategories
+        usecase "Gerer groupes" as UC_ManageGroups
+        usecase "Gerer joueurs" as UC_ManagePlayers
+        usecase "Affecter coach au groupe" as UC_AssignCoach
+        usecase "Affecter joueur a categorie" as UC_AssignCategory
+        usecase "Consulter paiements" as UC_ViewAllPayments
+        usecase "Valider paiement parent" as UC_ValidatePayment
+        usecase "Envoyer notifications" as UC_SendNotif
+    
+        usecase "Consulter groupes assignes" as UC_ViewAssignedGroups
+        usecase "Affecter joueur au groupe" as UC_AssignPlayerGroup
+        usecase "Planifier seances" as UC_PlanSessions
+        usecase "Faire appel" as UC_Attendance
+        usecase "Saisir motif d'absence" as UC_AbsenceReason
+        usecase "Evaluer joueurs" as UC_EvaluatePlayers
+    
+
+        usecase "Consulter suivi de l'enfant" as UC_ViewTracking
+        usecase "Consulter planning" as UC_ViewSchedule
+        usecase "Payer en ligne" as UC_PayOnline
+        usecase "Consulter historique paiements" as UC_ViewPayments
+    
+}
+
+User --> UC_Auth
+
+Admin --> UC_ManageUsers
+Admin --> UC_ManageCategories
+Admin --> UC_ManageGroups
+Admin --> UC_ManagePlayers
+Admin --> UC_AssignCoach
+Admin --> UC_AssignCategory
+Admin --> UC_ViewAllPayments
+Admin --> UC_ValidatePayment
+Admin --> UC_SendNotif
+
+Coach --> UC_ViewAssignedGroups
+Coach --> UC_AssignPlayerGroup
+Coach --> UC_PlanSessions
+Coach --> UC_Attendance
+Coach --> UC_EvaluatePlayers
+
+Parent --> UC_ViewTracking
+Parent --> UC_ViewSchedule
+Parent --> UC_PayOnline
+Parent --> UC_ViewPayments
+
+' Auth obligatoire
+UC_ManageUsers ..> UC_Auth : <<include>>
+UC_ManageCategories ..> UC_Auth : <<include>>
+UC_ManageGroups ..> UC_Auth : <<include>>
+UC_ManagePlayers ..> UC_Auth : <<include>>
+UC_AssignCoach ..> UC_Auth : <<include>>
+UC_AssignCategory ..> UC_Auth : <<include>>
+UC_ViewAllPayments ..> UC_Auth : <<include>>
+UC_ValidatePayment ..> UC_Auth : <<include>>
+UC_SendNotif ..> UC_Auth : <<include>>
+
+UC_ViewAssignedGroups ..> UC_Auth : <<include>>
+UC_AssignPlayerGroup ..> UC_Auth : <<include>>
+UC_PlanSessions ..> UC_Auth : <<include>>
+UC_Attendance ..> UC_Auth : <<include>>
+UC_AbsenceReason ..> UC_Auth : <<include>>
+UC_EvaluatePlayers ..> UC_Auth : <<include>>
+
+UC_ViewTracking ..> UC_Auth : <<include>>
+UC_ViewSchedule ..> UC_Auth : <<include>>
+UC_PayOnline ..> UC_Auth : <<include>>
+UC_ViewPayments ..> UC_Auth : <<include>>
+
+' Relations metier
+UC_AssignCoach ..> UC_ManageGroups : <<include>>
+UC_AssignCategory ..> UC_ManagePlayers : <<include>>
+UC_ValidatePayment ..> UC_ViewAllPayments : <<include>>
+UC_AbsenceReason .up.> UC_Attendance : <<extend>>
+
+Stripe --> UC_PayOnline
+@enduml
